@@ -6,7 +6,8 @@ import { RouterView, RouterLink } from "vue-router";
   <RouterView />
   <nav class="debug-router">
     <RouterLink to="/" class="debug-link">Main</RouterLink>
-    <RouterLink to="debug" class="debug-link">Debug</RouterLink>
+    <RouterLink to="/chaiweizer" class="debug-link">Tree</RouterLink>
+    <RouterLink to="/debug" class="debug-link">Debug</RouterLink>
   </nav>
 </template>
 

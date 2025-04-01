@@ -8,7 +8,7 @@ const router = createRouter({
       path: "/",
       name: "main",
       component: MainView,
-    },
+    },  
     {
       path: "/debug",
       name: "debug",
@@ -17,6 +17,12 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/DebugView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "tree",
+      component: () => import("../views/TreeView/TreeView.vue"),
+    },
+    
   ],
 });
 
