@@ -1,7 +1,34 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <template>
   <RouterView />
+  <nav class="debug-router">
+    <RouterLink to="/" class="debug-link">Main</RouterLink>
+    <RouterLink to="debug" class="debug-link">Debug</RouterLink>
+  </nav>
 </template>
+
+<style scoped>
+
+.debug-router {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  
+  padding: 12px;
+
+  background-color: var(--black-soft);
+
+  border-top-right-radius: 10px;
+}
+
+.debug-link {
+  padding: 5px;
+
+  color: var(--color-link);
+  text-decoration: none;  
+}
+
+</style>

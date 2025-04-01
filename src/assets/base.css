@@ -8,6 +8,8 @@
   --black-soft: #222222;
 
   --gray: #a9a9ad;
+
+  --blue-soft: #5e86f7;
 }
 
 /* semantic color variables for this project */
@@ -15,6 +17,8 @@
   --color-background: var(--white);
 
   --color-text: var(--black);
+
+  --color-link: var(--blue-soft);
 }
 
 @media (prefers-color-scheme: dark) {
