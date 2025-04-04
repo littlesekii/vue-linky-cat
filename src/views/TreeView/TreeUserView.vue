@@ -1,10 +1,9 @@
 <script setup>
 import LinkButton from "@/components/LinkButton.vue";
-import router from "@/router";
 import { ref } from "vue";
 
-const user = ref("");
-user.value = router.currentRoute.value.path.replace("/", "");
+const props = defineProps(["userData"]);
+const user = ref(props.userData);
 
 </script>
 
@@ -21,10 +20,10 @@ user.value = router.currentRoute.value.path.replace("/", "");
 
         <div class="tree-info-details flex f-column f-centered tal-center ovfx-hidden">
           <h1 class="tree-info-details-name break-keep ">
-            JOSÉFINA ÇHÃIWEIZER
+            {{ user.name }}
           </h1>
           <h2 class="tree-info-details-username">
-            @{{ user }}
+            @{{ user.username }}
           </h2>
 
           <p class="tree-info-details-description break-keep"> 
@@ -37,10 +36,7 @@ user.value = router.currentRoute.value.path.replace("/", "");
     </header>
 
     <nav class="tree-links">
-      <LinkButton class="tree-links-button" title="Instagram" url="https://instagram.com/chaiweiszer" />
-      <LinkButton class="tree-links-button" title="Twitch" url="https://twitch.tv/littlesekii" />
-      <LinkButton class="tree-links-button" title="Youtube" url="https://youtube.com/@littlesekii" />
-      
+      <LinkButton v-for="(link, key) in user.links" :key="key" class="tree-links-button"  :title="link.title" :url="link.url" />
     </nav>
 
   </main>
