@@ -1,8 +1,8 @@
 <script setup>
-import { computed } from "vue";
+import { onBeforeMount } from "vue";
 import { RouterView, RouterLink } from "vue-router";
 
-computed(() => window.location.replace("http://sh.linky.cat"));
+onBeforeMount(() => window.location.replace("http://sh.linky.cat"));
 </script>
 
 <template>
