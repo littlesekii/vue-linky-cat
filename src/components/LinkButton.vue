@@ -26,7 +26,7 @@ function goto() {
   justify-content: center;
   align-items: center;
 
-  border: 0.1px solid white;
+  border: 0.1px solid var(--color-text);
   cursor: pointer;
 
   user-select: none;

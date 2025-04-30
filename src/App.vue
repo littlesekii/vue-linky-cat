@@ -1,5 +1,8 @@
 <script setup>
+import { computed } from "vue";
 import { RouterView, RouterLink } from "vue-router";
+
+computed(() => window.location.replace("http://sh.linky.cat"));
 </script>
 
 <template>

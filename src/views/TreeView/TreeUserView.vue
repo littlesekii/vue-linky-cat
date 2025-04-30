@@ -38,7 +38,6 @@ const user = ref(props.userData);
     <nav class="tree-links">
       <LinkButton v-for="(link, key) in user.links" :key="key" class="tree-links-button"  :title="link.title" :url="link.url" />
     </nav>
-
   </main>
 </template>
 
@@ -83,6 +82,7 @@ const user = ref(props.userData);
   .tree-links {
     width: 80%;
     max-width: 35em;
+    
     margin-top: 2em;
     align-self: center;
 
@@ -91,4 +91,5 @@ const user = ref(props.userData);
   .tree-links-button {
     margin-bottom: 1em;
   }
+
 </style>
