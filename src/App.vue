@@ -2,7 +2,7 @@
 import { onBeforeMount } from "vue";
 import { RouterView, RouterLink } from "vue-router";
 
-onBeforeMount(() => window.location.replace("http://sh.linky.cat"));
+onBeforeMount(() => window.location.replace("https://sh.linky.cat"));
 </script>
 
 <template>
