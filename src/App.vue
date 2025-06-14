@@ -1,13 +1,13 @@
 <script setup>
-import { onBeforeMount } from "vue";
 import { RouterView, RouterLink } from "vue-router";
 
-onBeforeMount(() => window.location.replace("https://sh.linky.cat"));
+const devMode = import.meta.env.VITE_DEVMODE == "true";
+
 </script>
 
 <template>
   <RouterView />
-  <nav class="debug-router">
+  <nav class="debug-router" v-if="devMode">
     <RouterLink to="/" class="debug-link">Main</RouterLink>
     <RouterLink to="/chaiweizer" class="debug-link">Tree</RouterLink>
     <RouterLink to="/debug" class="debug-link">Debug</RouterLink>

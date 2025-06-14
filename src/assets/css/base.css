@@ -12,7 +12,7 @@
 
   --gray: #a9a9ad;
 
-  --blue-soft: #5e86f7;
+  --bluecat: #6f91ff;
 }
 
 /* semantic color variables for this project */
@@ -21,7 +21,7 @@
 
   --color-text: var(--black);
 
-  --color-link: var(--blue-soft);
+  --color-link: var(--bluecat);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,4 +51,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
 }

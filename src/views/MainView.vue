@@ -3,8 +3,12 @@
 </script>
 
 <template>
-  <main>
-    <p>Hello, Linky Cat!</p>
+  <main class="flex f-column">
+    <h1>Welcome to Linky Cat!</h1>
+    <p>We're currently under construction...</p>
+    <br><br><br><br>
+    <p>But you still can use our URL Shortener</p>
+    <a href="https://shorturl.linky.cat">shorturl.linky.cat</a>
   </main>
   
 </template>
@@ -20,6 +24,6 @@ main {
 }
 
 main p {
-  font-size: 18pt;
+  font-size: 13pt;
 }
 </style>
