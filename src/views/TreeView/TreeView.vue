@@ -32,7 +32,7 @@ user.value = router.currentRoute.value.path.replace("/", "");
 
 const response = ref();
 onMounted(() => {
-  http.get("/api/user/" + user.value)
+  http.get("/api/tree/" + user.value)
     .then(res => res.json())
     .then(data => {
       response.value = data;

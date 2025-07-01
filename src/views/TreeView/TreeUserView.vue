@@ -20,7 +20,7 @@ const user = ref(props.userData);
 
         <div class="tree-info-details flex f-column f-centered tal-center ovfx-hidden">
           <h1 class="tree-info-details-name break-keep ">
-            {{ user.name }}
+            {{ user.fullName }}
           </h1>
           <h2 class="tree-info-details-username">
             @{{ user.username }}
