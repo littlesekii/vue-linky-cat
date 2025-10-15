@@ -5,6 +5,8 @@ import { ref } from "vue";
 const props = defineProps(["userData"]);
 const user = ref(props.userData);
 
+document.title = `@${user.value.username} - Linky Cat`;
+
 </script>
 
 <template>
