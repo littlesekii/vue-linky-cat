@@ -15,7 +15,7 @@ const user = ref(props.userData);
       <div class="tree-info flex f-column f-centered">
 
         <div class="tree-info-picture">
-          <img class="rounded-full" src="https://picsum.photos/96/96" alt="">
+          <img class="rounded-full" src="PROFILE.png" alt="">
         </div>
 
         <div class="tree-info-details flex f-column f-centered tal-center ovfx-hidden">
@@ -27,7 +27,7 @@ const user = ref(props.userData);
           </h2>
 
           <p class="tree-info-details-description break-keep"> 
-            "Harum eum iste quasi autem minima dolor."
+            Dev, streamer e jogador de jogos.
           </p>
         </div>
 
