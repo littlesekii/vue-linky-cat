@@ -32,16 +32,7 @@ user.value = router.currentRoute.value.path.replace("/", "");
 
 const response = ref();
 onMounted(() => {
-  http.get("/api/tree/" + user.value)
-    .then(res => res.json())
-    .then(data => {
-      response.value = data;
-      userLocated(true);
-    }).catch(() => {
-      userLocated(false);
-    });
-
-  
+  userLocated(user.value == "littlesekii");
 });
 
 function userLocated(located) {
