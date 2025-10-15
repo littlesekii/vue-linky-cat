@@ -15,7 +15,7 @@ const user = ref(props.userData);
       <div class="tree-info flex f-column f-centered">
 
         <div class="tree-info-picture">
-          <img class="rounded-full" src="PROFILE.png" alt="">
+          <img class="rounded-full" src="@/PROFILE.png" alt="">
         </div>
 
         <div class="tree-info-details flex f-column f-centered tal-center ovfx-hidden">
