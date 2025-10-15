@@ -32,6 +32,30 @@ user.value = router.currentRoute.value.path.replace("/", "");
 
 const response = ref();
 onMounted(() => {
+
+  response.value = {
+    fullName: "Seki",
+    username: "littlesekii",
+    links: [
+      {
+        title: "Mensagem na live (LivePix)",
+        url: "https://livepix.gg/littlesekii"
+      },
+      {
+        title: "Servidor do Discord",
+        url: "https://discord.gg/USZuU2F7"
+      },
+      {
+        title: "Youtube",
+        url: "https://youtube.com/@littlesekii"
+      },
+      {
+        title: "Twitch",
+        url: "https://twitch.tv/littlesekii"
+      }
+    ]
+  };
+
   userLocated(user.value == "littlesekii");
 });
 
@@ -39,8 +63,6 @@ function userLocated(located) {
   state.loading = false;
   state.locatedUser = located;
 }
-
-
 
 </script>
 
