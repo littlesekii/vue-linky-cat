@@ -34,4 +34,9 @@ function goto() {
   border-radius: 5px;
 }
 
+.link-button:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
 </style>
