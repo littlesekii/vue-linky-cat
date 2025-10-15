@@ -2,7 +2,7 @@
 import logo_dark from "@/assets/icons/logo-dark.gif";
 import logo_light from "@/assets/icons/logo-light.gif";
 
-import http from "@/utils/http";
+// import http from "@/utils/http";
 import router from "@/router";
 
 import { computed, onMounted, reactive, ref } from "vue";
