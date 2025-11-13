@@ -43,7 +43,7 @@ onMounted(() => {
       },
       {
         title: "Servidor do Discord",
-        url: "https://discord.gg/HupE9Ydq"
+        url: "https://discord.com/invite/jFBXGmhDhG"
       },
       {
         title: "Youtube",
