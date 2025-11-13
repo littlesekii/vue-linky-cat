@@ -52,6 +52,10 @@ onMounted(() => {
       {
         title: "Twitch",
         url: "https://twitch.tv/littlesekii"
+      },
+      {
+        title: "TikTok",
+        url: "https://tiktok.com/@littlesekii"
       }
     ]
   };
