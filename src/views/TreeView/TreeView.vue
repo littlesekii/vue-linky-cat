@@ -60,7 +60,7 @@ onMounted(() => {
     ]
   };
 
-  userLocated(user.value == "littlesekii");
+  userLocated(user.value == "littlesekii" || user.value == "seki" || user.value == "sekii" || user.value || "sekki");
 });
 
 function userLocated(located) {
