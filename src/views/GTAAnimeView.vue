@@ -4,7 +4,7 @@ import { useHead } from '@unhead/vue'
 
 const isUnlocked = ref(false)
 
-// 1. GERENCIAMENTO DOS SCRIPTS EXTERNOS
+// 1. CARREGAMENTO DOS SCRIPTS EXTERNOS
 useHead({
   title: 'Download GTA Anime V2 | Mod GTA San Andreas',
   meta: [
@@ -12,30 +12,30 @@ useHead({
   ],
   script: [
     {
-      // Script do Banner Horizontal 1 (Topo)
+      // Script do Banner Superior (728x90) que você já tinha
       src: 'https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js',
       async: true,
       'data-cfasync': 'false',
       tagPosition: 'bodyClose'
     },
     {
-      // Script do Novo Banner Vertical (Base)
-      src: 'https://www.highperformanceformat.com/b5395a666a99ad3f567a22c9ab1e1a6a/invoke.js',
+      // Script do Novo Banner Inferior (468x60)
+      src: 'https://www.highperformanceformat.com/53c474898bdecb825257453c12b5713f/invoke.js',
       async: true,
       tagPosition: 'bodyClose'
     }
   ]
 })
 
-// 2. CONFIGURAÇÃO DO OBJETO ATOPTIONS ANTES DO DIRECIONAMENTO
+// 2. CONFIGURAÇÃO DOS PARÂMETROS DO NOVO BANNER
 onMounted(() => {
-  // Define o objeto de parâmetros do novo anúncio diretamente no escopo global window
+  // Sobrescreve o objeto global com as configurações do novo banner de 468x60
   window.atOptions = {
-    'key': 'b5395a666a99ad3f567a22c9ab1e1a6a',
-    'format': 'iframe',
-    'height': 300,
-    'width': 160,
-    'params': {}
+    'key' : '53c474898bdecb825257453c12b5713f',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
   }
 })
 
@@ -49,8 +49,8 @@ const handleYouTubeClick = () => {
 <template>
   <div class="page-wrapper">
     
-    <!-- BANNER 1: HORIZONTAL (O QUE VOCÊ JÁ TINHA - NO TOPO) -->
-    <div class="ad-box-horizontal">
+    <!-- BANNER 1: HORIZONTAL GRANDE (TOPO) -->
+    <div class="ad-box-top">
       <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
     </div>
 
@@ -82,10 +82,8 @@ const handleYouTubeClick = () => {
       </a>
     </div>
 
-    <!-- BANNER 2: NOVO BANNER VERTICAL (160x300 - NA BASE) -->
-    <!-- Como este script injeta o iframe diretamente onde ele é executado, 
-         o script do head lerá o escopo do window e montará o elemento aqui automaticamente -->
-    <div class="ad-box-vertical">
+    <!-- BANNER 2: NOVO BANNER HORIZONTAL MENOR (468x60 - BASE) -->
+    <div class="ad-box-bottom-new">
       <div class="ad-placeholder-text">Publicidade</div>
     </div>
 
@@ -116,8 +114,8 @@ const handleYouTubeClick = () => {
   z-index: 1;
 }
 
-/* Estilo para o banner horizontal que você já tinha */
-.ad-box-horizontal {
+/* Espaço do banner de cima */
+.ad-box-top {
   width: 100%;
   max-width: 728px;
   min-height: 90px;
@@ -127,10 +125,11 @@ const handleYouTubeClick = () => {
   margin-bottom: 25px;
 }
 
-/* Estilo específico para o novo bloco vertical (160x300) na base */
-.ad-box-vertical {
-  width: 160px;
-  height: 300px;
+/* Ajustado para o formato horizontal menor (468x60) na base */
+.ad-box-bottom-new {
+  width: 100%;
+  max-width: 468px;
+  height: 60px;
   margin-top: 25px;
   display: flex;
   flex-direction: column;
@@ -141,9 +140,9 @@ const handleYouTubeClick = () => {
 }
 
 .ad-placeholder-text {
-  font-size: 10px;
+  font-size: 9px;
   color: #444;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
