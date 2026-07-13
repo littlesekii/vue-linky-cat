@@ -1,8 +1,13 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 // Estado para controlar se o link do Drive está liberado
 const isUnlocked = ref(false)
+
+// Atualiza o título da aba do navegador dinamicamente ao carregar o componente
+onMounted(() => {
+  document.title = "Download GTA Anime | Mod GTA San Andreas Atualizado"
+})
 
 const handleYouTubeClick = () => {
   // Aguarda 1 segundo antes de liberar o botão para dar tempo do redirecionamento
@@ -14,9 +19,21 @@ const handleYouTubeClick = () => {
 
 <template>
   <div class="page-wrapper">
+    <!-- Seção oculta apenas para robôs de SEO (Web Crawlers) extraírem palavras-chave extras -->
+    <span class="seo-hidden">
+      Aqui você pode baixar o GTA Anime atualizado. Modificações completas para GTA San Andreas PC e Android, 
+      com skins de anime, texturas otimizadas e download 100% seguro via Google Drive pelo canal LittleSekii.
+    </span>
+
     <div class="container">
-      <h1>Falta pouco! 🚀</h1>
-      <p>Para liberar o acesso ao arquivo do GTA Anime, por favor inscreva-se no canal do YouTube abaixo.</p>
+      <!-- H1 com palavras-chave fortes para SEO -->
+      <h1>Download GTA Anime 🚀</h1>
+      
+      <!-- Parágrafo enriquecido com termos de busca (GTA San Andreas Mod, Baixar, etc) -->
+      <p>
+        Você está prestes a baixar o melhor <strong>mod de GTA Anime para GTA San Andreas</strong>!<br>
+        Para liberar o acesso ao arquivo exclusivo no Google Drive, por favor inscreva-se no canal do YouTube abaixo.
+      </p>
 
       <!-- Passo 1: Link do YouTube com confirmação automática -->
       <a 
@@ -24,25 +41,38 @@ const handleYouTubeClick = () => {
         target="_blank" 
         class="btn btn-youtube"
         @click="handleYouTubeClick"
+        rel="noopener noreferrer"
       >
-        1. Inscrever-se no Canal
+        1. Inscrever-se no Canal (LittleSekii)
       </a>
 
       <!-- Passo 2: Link do Google Drive -->
-      <!-- O link só se comporta como link funcional se estiver desbloqueado, caso contrário vira um botão desativado -->
       <a 
         :href="isUnlocked ? 'https://drive.google.com/file/d/1Ab-7e5yzYydgzVxb2ZWNUhL4UF1FBmda/view?usp=sharing' : undefined" 
         target="_blank" 
         class="btn btn-drive" 
         :class="{ 'active': isUnlocked }"
+        rel="noopener noreferrer"
       >
-        {{ isUnlocked ? '2. Acessar Link do Google Drive (Liberado!)' : '2. Acessar Link do Google Drive' }}
+        {{ isUnlocked ? '2. Baixar GTA Anime (Liberado!)' : '2. Acessar Link do Google Drive' }}
       </a>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* Mantém o texto de SEO visível para os robôs do Google, mas esconde totalmente do usuário */
+.seo-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .page-wrapper {
   background: #0f0f0f;
   color: #ffffff;
@@ -68,16 +98,21 @@ const handleYouTubeClick = () => {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 15px;
   color: #fff;
+  font-weight: 800;
 }
 
 p {
   color: #aaa;
   font-size: 15px;
   margin-bottom: 30px;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+p strong {
+  color: #ff0000; /* Destaca as palavras-chave principais em vermelho */
 }
 
 .btn {
