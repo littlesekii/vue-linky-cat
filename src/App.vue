@@ -1,11 +1,13 @@
 <script setup>
 import { RouterView, RouterLink } from "vue-router";
+import { Analytics } from "@vercel/analytics/vue";
 
 const devMode = import.meta.env.VITE_DEVMODE == "true";
 
 </script>
 
 <template>
+  <Analytics/>
   <RouterView />
   <nav class="debug-router" v-if="devMode">
     <RouterLink to="/" class="debug-link">Main</RouterLink>
