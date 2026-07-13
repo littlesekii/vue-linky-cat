@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
 const isUnlocked = ref(false)
 
-// 1. CARREGAMENTO DOS SCRIPTS EXTERNOS
+// Injeta apenas o script necessário para o funcionamento do banner nativo
 useHead({
   title: 'Download GTA Anime V2 | Mod GTA San Andreas',
   meta: [
@@ -12,31 +12,12 @@ useHead({
   ],
   script: [
     {
-      // Script do Banner Superior (728x90) que você já tinha
       src: 'https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js',
       async: true,
       'data-cfasync': 'false',
       tagPosition: 'bodyClose'
-    },
-    {
-      // Script do Novo Banner Inferior (468x60)
-      src: 'https://www.highperformanceformat.com/53c474898bdecb825257453c12b5713f/invoke.js',
-      async: true,
-      tagPosition: 'bodyClose'
     }
   ]
-})
-
-// 2. CONFIGURAÇÃO DOS PARÂMETROS DO NOVO BANNER
-onMounted(() => {
-  // Sobrescreve o objeto global com as configurações do novo banner de 468x60
-  window.atOptions = {
-    'key' : '53c474898bdecb825257453c12b5713f',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
-  }
 })
 
 const handleYouTubeClick = () => {
@@ -49,11 +30,6 @@ const handleYouTubeClick = () => {
 <template>
   <div class="page-wrapper">
     
-    <!-- BANNER 1: HORIZONTAL GRANDE (TOPO) -->
-    <div class="ad-box-top">
-      <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
-    </div>
-
     <!-- CONTEÚDO PRINCIPAL (CAIXINHA) -->
     <div class="container">
       <h1>Download GTA Anime 🚀</h1>
@@ -82,9 +58,9 @@ const handleYouTubeClick = () => {
       </a>
     </div>
 
-    <!-- BANNER 2: NOVO BANNER HORIZONTAL MENOR (468x60 - BASE) -->
-    <div class="ad-box-bottom-new">
-      <div class="ad-placeholder-text">Publicidade</div>
+    <!-- BANNER NATIVO (POSICIONADO EMBAIXO DA CAIXINHA) -->
+    <div class="ad-box-bottom">
+      <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
     </div>
 
   </div>
@@ -114,37 +90,15 @@ const handleYouTubeClick = () => {
   z-index: 1;
 }
 
-/* Espaço do banner de cima */
-.ad-box-top {
+/* Espaçamento e área reservada para o banner na base */
+.ad-box-bottom {
   width: 100%;
   max-width: 728px;
   min-height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px;
-}
-
-/* Ajustado para o formato horizontal menor (468x60) na base */
-.ad-box-bottom-new {
-  width: 100%;
-  max-width: 468px;
-  height: 60px;
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #151515;
-  border-radius: 4px;
-}
-
-.ad-placeholder-text {
-  font-size: 9px;
-  color: #444;
-  margin-bottom: 2px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-top: 25px; /* Margem superior para afastar da caixinha */
 }
 
 h1 { font-size: 26px; margin-bottom: 15px; }
