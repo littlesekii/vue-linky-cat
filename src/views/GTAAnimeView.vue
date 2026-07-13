@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
 const isUnlocked = ref(false)
 
-// 1. CARREGAMENTO DOS SCRIPTS (Via Head/Body Global da página)
+// Injeta apenas o script necessário para o funcionamento do banner nativo
 useHead({
   title: 'Download GTA Anime V2 | Mod GTA San Andreas',
   meta: [
@@ -12,32 +12,13 @@ useHead({
   ],
   script: [
     {
-      // Script do banner nativo (precisa carregar antes ou durante a montagem da div)
+      // Carrega o script responsável por injetar o anúncio na div correspondente
       src: 'https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js',
       async: true,
       'data-cfasync': 'false',
       tagPosition: 'bodyClose'
-    },
-    {
-      // Script secundário (Popunder/Notificação)
-      src: 'https://pl30353675.effectivecpmnetwork.com/e9/99/31/e999310a991b7b7605d86347cb4c25bc.js',
-      async: true,
-      tagPosition: 'bodyClose'
     }
   ]
-})
-
-// 2. INICIALIZAÇÃO DO BANNER NATIVO
-// Redes de anúncios monitoram o DOM. Garanta que a função invoke seja disparada assim que o Vue montar a tela.
-onMounted(() => {
-  try {
-    if (window.atOptions) {
-      // Algumas redes exigem relançar o push se o objeto de opções já existir globalmente
-      (window.adsbygoogle || []).push({});
-    }
-  } catch (e) {
-    console.error("Erro ao inicializar blocos de anúncios:", e)
-  }
 })
 
 const handleYouTubeClick = () => {
@@ -53,11 +34,7 @@ const handleYouTubeClick = () => {
       <h1>Download GTA Anime 🚀</h1>
       <p>Você está prestes a baixar o melhor mod de GTA Anime para GTA San Andreas!</p>
 
-      <!-- 
-        ESPAÇO DO BANNER NATIVO 
-        A div precisa ter EXATAMENTE a ID fornecida pela rede de anúncios.
-        Adicionei uma margem (ad-box) para o banner não colar nos seus botões.
-      -->
+      <!-- BANNER NATIVO (O pop-up foi removido do código) -->
       <div class="ad-box">
         <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
       </div>
@@ -109,10 +86,10 @@ const handleYouTubeClick = () => {
   width: 100%;
 }
 
-/* Centraliza e dá um espaçamento seguro para o banner nativo */
+/* Espaçamento para o banner */
 .ad-box {
   margin: 20px 0;
-  min-height: 60px; /* Evita que o layout "pule" quando o anúncio carregar */
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
