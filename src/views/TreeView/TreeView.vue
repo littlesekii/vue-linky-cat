@@ -42,6 +42,10 @@ onMounted(() => {
         url: "https://livepix.gg/littlesekii"
       },
       {
+        title: "GTA Anime - Download",
+        url: "https://linky.cat/gta_anime"
+      },
+      {
         title: "Servidor do Discord",
         url: "https://discord.com/invite/jFBXGmhDhG"
       },
