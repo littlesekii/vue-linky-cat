@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
 
 const isUnlocked = ref(false)
 
-// Injeta apenas o script necessário para o funcionamento do banner nativo
+// 1. GERENCIAMENTO DOS SCRIPTS EXTERNOS
 useHead({
   title: 'Download GTA Anime V2 | Mod GTA San Andreas',
   meta: [
@@ -12,13 +12,31 @@ useHead({
   ],
   script: [
     {
-      // Carrega o script responsável por injetar o anúncio na div correspondente
+      // Script do Banner Horizontal 1 (Topo)
       src: 'https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js',
       async: true,
       'data-cfasync': 'false',
       tagPosition: 'bodyClose'
+    },
+    {
+      // Script do Novo Banner Vertical (Base)
+      src: 'https://www.highperformanceformat.com/b5395a666a99ad3f567a22c9ab1e1a6a/invoke.js',
+      async: true,
+      tagPosition: 'bodyClose'
     }
   ]
+})
+
+// 2. CONFIGURAÇÃO DO OBJETO ATOPTIONS ANTES DO DIRECIONAMENTO
+onMounted(() => {
+  // Define o objeto de parâmetros do novo anúncio diretamente no escopo global window
+  window.atOptions = {
+    'key': 'b5395a666a99ad3f567a22c9ab1e1a6a',
+    'format': 'iframe',
+    'height': 300,
+    'width': 160,
+    'params': {}
+  }
 })
 
 const handleYouTubeClick = () => {
@@ -30,14 +48,16 @@ const handleYouTubeClick = () => {
 
 <template>
   <div class="page-wrapper">
+    
+    <!-- BANNER 1: HORIZONTAL (O QUE VOCÊ JÁ TINHA - NO TOPO) -->
+    <div class="ad-box-horizontal">
+      <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL (CAIXINHA) -->
     <div class="container">
       <h1>Download GTA Anime 🚀</h1>
       <p>Você está prestes a baixar o melhor mod de GTA Anime para GTA San Andreas!</p>
-
-      <!-- BANNER NATIVO (O pop-up foi removido do código) -->
-      <div class="ad-box">
-        <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
-      </div>
 
       <!-- Passo 1: Link do YouTube -->
       <a 
@@ -61,6 +81,14 @@ const handleYouTubeClick = () => {
         {{ isUnlocked ? '2. Baixar GTA Anime (Liberado!)' : '2. Acessar Link do Google Drive' }}
       </a>
     </div>
+
+    <!-- BANNER 2: NOVO BANNER VERTICAL (160x300 - NA BASE) -->
+    <!-- Como este script injeta o iframe diretamente onde ele é executado, 
+         o script do head lerá o escopo do window e montará o elemento aqui automaticamente -->
+    <div class="ad-box-vertical">
+      <div class="ad-placeholder-text">Publicidade</div>
+    </div>
+
   </div>
 </template>
 
@@ -69,11 +97,12 @@ const handleYouTubeClick = () => {
   background: #0f0f0f;
   color: #ffffff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 .container {
@@ -84,15 +113,39 @@ const handleYouTubeClick = () => {
   text-align: center;
   max-width: 450px;
   width: 100%;
+  z-index: 1;
 }
 
-/* Espaçamento para o banner */
-.ad-box {
-  margin: 20px 0;
-  min-height: 60px;
+/* Estilo para o banner horizontal que você já tinha */
+.ad-box-horizontal {
+  width: 100%;
+  max-width: 728px;
+  min-height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Estilo específico para o novo bloco vertical (160x300) na base */
+.ad-box-vertical {
+  width: 160px;
+  height: 300px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #151515;
+  border-radius: 4px;
+}
+
+.ad-placeholder-text {
+  font-size: 10px;
+  color: #444;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h1 { font-size: 26px; margin-bottom: 15px; }
