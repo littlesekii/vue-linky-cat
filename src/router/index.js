@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: "/gta_anime",
       name: "gtaanime",
-      component: () => import("../views/GTAAnimeView/GTAAnimeView.vue"),
+      component: () => import("../views/GTAAnimeView.vue"),
     },
     {
       path: "/:pathMatch(.*)*",
