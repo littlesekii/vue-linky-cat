@@ -83,6 +83,10 @@ const handleYouTubeClick = () => {
       </a>
     </div>
   </div>
+  <script async="async" data-cfasync="false" src="https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js"></script>
+  <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
+  <script src="https://pl30353675.effectivecpmnetwork.com/e9/99/31/e999310a991b7b7605d86347cb4c25bc.js"></script>
+
 </template>
 
 <style scoped>
