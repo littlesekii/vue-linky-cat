@@ -1,41 +1,46 @@
 <script setup>
-import { ref } from 'vue'
-import { useHead } from '@unhead/vue' // Importa a função de SEO
+import { ref, onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
 
-// Estado para controlar se o link do Drive está liberado
 const isUnlocked = ref(false)
 
-// injeta as Meta Tags dinamicamente no <head> da página
+// 1. CARREGAMENTO DOS SCRIPTS (Via Head/Body Global da página)
 useHead({
-  title: 'Download GTA Anime V2 | Mod GTA San Andreas Atualizado',
+  title: 'Download GTA Anime V2 | Mod GTA San Andreas',
   meta: [
-    { 
-      name: 'description', 
-      content: 'Baixar o melhor mod de GTA Anime para GTA San Andreas. Download seguro via Google Drive e atualizado pelo canal LittleSekii.' 
-    },
-    { 
-      name: 'keywords', 
-      content: 'gta anime, gta san andreas mod, baixar gta modificado, gta sa anime mod, littlesekii download gta, como baixar gta anime, gta anime mod apk' 
-    },
-    { name: 'robots', content: 'index, follow' },
-    
-    // Open Graph (WhatsApp, Facebook, Discord)
-    { property: 'og:type', content: 'website' },
-    { property: 'og:title', content: 'Download GTA Anime V2 | Mod GTA San Andreas' },
-    { property: 'og:description', content: 'Inscreva-se no canal para liberar o link exclusivo de download do GTA Anime Modificado.' },
-    { property: 'og:image', content: 'https://seusite.com/banner-gta-anime.jpg' }, // Substitua pela URL da imagem de capa se tiver uma
-    
-    // Twitter Card
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Download GTA Anime V2 | Mod GTA San Andreas' }
+    { name: 'description', content: 'Baixar o melhor mod de GTA Anime...' }
   ],
-  link: [
-    { rel: 'canonical', href: 'https://seusite.com/' } // Substitua pelo link real do seu site quando publicar
+  script: [
+    {
+      // Script do banner nativo (precisa carregar antes ou durante a montagem da div)
+      src: 'https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js',
+      async: true,
+      'data-cfasync': 'false',
+      tagPosition: 'bodyClose'
+    },
+    {
+      // Script secundário (Popunder/Notificação)
+      src: 'https://pl30353675.effectivecpmnetwork.com/e9/99/31/e999310a991b7b7605d86347cb4c25bc.js',
+      async: true,
+      tagPosition: 'bodyClose'
+    }
   ]
 })
 
+// 2. INICIALIZAÇÃO DO BANNER NATIVO
+// Redes de anúncios monitoram o DOM. Garanta que a função invoke seja disparada assim que o Vue montar a tela.
+onMounted(() => {
+  try {
+    if (window.atOptions) {
+      // Algumas redes exigem relançar o push se o objeto de opções já existir globalmente
+      (window.adsbygoogle || []).push({});
+    }
+  } catch (e) {
+    console.error("Erro ao inicializar blocos de anúncios:", e)
+  }
+})
+
 const handleYouTubeClick = () => {
-  // Aguarda 1 segundo antes de liberar o botão para dar tempo do redirecionamento
   setTimeout(() => {
     isUnlocked.value = true
   }, 1000)
@@ -44,23 +49,20 @@ const handleYouTubeClick = () => {
 
 <template>
   <div class="page-wrapper">
-    <!-- Seção oculta apenas para robôs de SEO (Web Crawlers) extraírem palavras-chave extras -->
-    <span class="seo-hidden">
-      Aqui você pode baixar o GTA Anime atualizado. Modificações completas para GTA San Andreas PC e Android, 
-      com skins de anime, texturas otimizadas e download 100% seguro via Google Drive pelo canal LittleSekii.
-    </span>
-
     <div class="container">
-      <!-- H1 com palavras-chave fortes para SEO -->
       <h1>Download GTA Anime 🚀</h1>
-      
-      <!-- Parágrafo enriquecido com termos de busca (GTA San Andreas Mod, Baixar, etc) -->
-      <p>
-        Você está prestes a baixar o melhor <strong>mod de GTA Anime para GTA San Andreas</strong>!<br>
-        Para liberar o acesso ao arquivo exclusivo no Google Drive, por favor inscreva-se no canal do YouTube abaixo.
-      </p>
+      <p>Você está prestes a baixar o melhor mod de GTA Anime para GTA San Andreas!</p>
 
-      <!-- Passo 1: Link do YouTube com confirmação automática -->
+      <!-- 
+        ESPAÇO DO BANNER NATIVO 
+        A div precisa ter EXATAMENTE a ID fornecida pela rede de anúncios.
+        Adicionei uma margem (ad-box) para o banner não colar nos seus botões.
+      -->
+      <div class="ad-box">
+        <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
+      </div>
+
+      <!-- Passo 1: Link do YouTube -->
       <a 
         href="https://www.youtube.com/@littlesekii?sub_confirmation=1" 
         target="_blank" 
@@ -83,25 +85,9 @@ const handleYouTubeClick = () => {
       </a>
     </div>
   </div>
-  <script async="async" data-cfasync="false" src="https://pl30353677.effectivecpmnetwork.com/99dc01b66c5068c6b6b37d04eba47b42/invoke.js"></script>
-  <div id="container-99dc01b66c5068c6b6b37d04eba47b42"></div>
-  <script src="https://pl30353675.effectivecpmnetwork.com/e9/99/31/e999310a991b7b7605d86347cb4c25bc.js"></script>
-
 </template>
 
 <style scoped>
-/* Mantém o texto de SEO visível para os robôs do Google, mas esconde totalmente do usuário */
-.seo-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
 .page-wrapper {
   background: #0f0f0f;
   color: #ffffff;
@@ -111,9 +97,6 @@ const handleYouTubeClick = () => {
   min-height: 100vh;
   width: 100vw;
   padding: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .container {
@@ -126,23 +109,17 @@ const handleYouTubeClick = () => {
   width: 100%;
 }
 
-h1 {
-  font-size: 26px;
-  margin-bottom: 15px;
-  color: #fff;
-  font-weight: 800;
+/* Centraliza e dá um espaçamento seguro para o banner nativo */
+.ad-box {
+  margin: 20px 0;
+  min-height: 60px; /* Evita que o layout "pule" quando o anúncio carregar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-p {
-  color: #aaa;
-  font-size: 15px;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-p strong {
-  color: #ff0000;
-}
+h1 { font-size: 26px; margin-bottom: 15px; }
+p { color: #aaa; font-size: 15px; margin-bottom: 25px; line-height: 1.6; }
 
 .btn {
   display: block;
@@ -150,48 +127,13 @@ p strong {
   padding: 14px;
   font-size: 16px;
   font-weight: bold;
-  border: none;
   border-radius: 8px;
-  cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
   margin-bottom: 15px;
-  text-align: center;
 }
 
-.btn-youtube {
-  background-color: #ff0000;
-  color: white;
-}
-
-.btn-youtube:hover {
-  background-color: #cc0000;
-  transform: translateY(-2px);
-}
-
-.btn-drive {
-  background-color: #333;
-  color: #777;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
-.btn-drive.active {
-  background-color: #1a73e8;
-  color: white;
-  pointer-events: auto;
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
-}
-
-.btn-drive.active:hover {
-  background-color: #1557b0;
-  transform: translateY(-2px);
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(26, 115, 232, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
-}
+.btn-youtube { background-color: #ff0000; color: white; }
+.btn-drive { background-color: #333; color: #777; pointer-events: none; cursor: not-allowed; }
+.btn-drive.active { background-color: #1a73e8; color: white; pointer-events: auto; cursor: pointer; }
 </style>
