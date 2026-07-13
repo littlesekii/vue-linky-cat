@@ -1,12 +1,37 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { useHead } from '@unhead/vue' // Importa a função de SEO
 
 // Estado para controlar se o link do Drive está liberado
 const isUnlocked = ref(false)
 
-// Atualiza o título da aba do navegador dinamicamente ao carregar o componente
-onMounted(() => {
-  document.title = "Download GTA Anime | Mod GTA San Andreas Atualizado"
+// injeta as Meta Tags dinamicamente no <head> da página
+useHead({
+  title: 'Download GTA Anime V2 | Mod GTA San Andreas Atualizado',
+  meta: [
+    { 
+      name: 'description', 
+      content: 'Baixar o melhor mod de GTA Anime para GTA San Andreas. Download seguro via Google Drive e atualizado pelo canal LittleSekii.' 
+    },
+    { 
+      name: 'keywords', 
+      content: 'gta anime, gta san andreas mod, baixar gta modificado, gta sa anime mod, littlesekii download gta, como baixar gta anime, gta anime mod apk' 
+    },
+    { name: 'robots', content: 'index, follow' },
+    
+    // Open Graph (WhatsApp, Facebook, Discord)
+    { property: 'og:type', content: 'website' },
+    { property: 'og:title', content: 'Download GTA Anime V2 | Mod GTA San Andreas' },
+    { property: 'og:description', content: 'Inscreva-se no canal para liberar o link exclusivo de download do GTA Anime Modificado.' },
+    { property: 'og:image', content: 'https://seusite.com/banner-gta-anime.jpg' }, // Substitua pela URL da imagem de capa se tiver uma
+    
+    // Twitter Card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Download GTA Anime V2 | Mod GTA San Andreas' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://seusite.com/' } // Substitua pelo link real do seu site quando publicar
+  ]
 })
 
 const handleYouTubeClick = () => {
@@ -112,7 +137,7 @@ p {
 }
 
 p strong {
-  color: #ff0000; /* Destaca as palavras-chave principais em vermelho */
+  color: #ff0000;
 }
 
 .btn {
@@ -130,7 +155,6 @@ p strong {
   text-align: center;
 }
 
-/* Botão do YouTube */
 .btn-youtube {
   background-color: #ff0000;
   color: white;
@@ -141,7 +165,6 @@ p strong {
   transform: translateY(-2px);
 }
 
-/* Botão do Google Drive (Bloqueado por padrão) */
 .btn-drive {
   background-color: #333;
   color: #777;
@@ -149,7 +172,6 @@ p strong {
   cursor: not-allowed;
 }
 
-/* Estado Ativo/Liberado no Vue via classe condicional */
 .btn-drive.active {
   background-color: #1a73e8;
   color: white;
