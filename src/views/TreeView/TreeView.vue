@@ -42,11 +42,11 @@ onMounted(() => {
         url: "https://livepix.gg/littlesekii"
       },
       {
-        title: "GTA Anime - Download",
+        title: "GTA GTA ANIME - Download",
         url: "https://linky.cat/gta_anime"
       },
       {
-        title: "Dragon Ball 67",
+        title: "DRAGON BALL 67 - Download",
         url: "https://linky.cat/dbz_67"
       },
       {
