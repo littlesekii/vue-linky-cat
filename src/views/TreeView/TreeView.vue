@@ -46,6 +46,10 @@ onMounted(() => {
         url: "https://linky.cat/gta_anime"
       },
       {
+        title: "Dragon Ball 67",
+        url: "https://linky.cat/dbz_67"
+      },
+      {
         title: "Servidor do Discord",
         url: "https://discord.com/invite/jFBXGmhDhG"
       },

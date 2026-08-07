@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import("../views/GTAAnimeView.vue"),
     },
     {
+      path: "/dbz_67",
+      name: "dbz67",
+      component: () => import("../views/DBZ67View.vue"),
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "tree",
       component: () => import("../views/TreeView/TreeView.vue"),
