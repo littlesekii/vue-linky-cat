@@ -42,24 +42,8 @@ onMounted(() => {
         url: "https://livepix.gg/littlesekii"
       },
       {
-        title: "GTA GTA ANIME - Download",
-        url: "https://linky.cat/gta_anime"
-      },
-      {
-        title: "DRAGON BALL 67 - Download",
-        url: "https://linky.cat/dbz_67"
-      },
-      {
-        title: "Servidor do Discord",
-        url: "https://discord.com/invite/jFBXGmhDhG"
-      },
-      {
         title: "Youtube",
         url: "https://youtube.com/@littlesekii"
-      },
-      {
-        title: "Twitch",
-        url: "https://twitch.tv/littlesekii"
       },
       {
         title: "TikTok",
